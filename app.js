@@ -11,15 +11,6 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('public'))
 
 const mongoose = require('mongoose')
-const Schema = mongoose.Schema
-const todoSchema = new Schema({
-  name: {
-    type: String,
-    required: true
-  }
-})
-module.exports = mongoose.model('Todo', todoSchema)
-
 mongoose.connect('mongodb://localhost/todo-list', { useNewUrlParser: true, useUnifiedTopology: true })
 
 const db = mongoose.connection
