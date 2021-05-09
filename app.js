@@ -4,6 +4,7 @@ const port = 3000
 
 const expressHandlebars = require('express-handlebars')
 const bodyParser = require('body-parser')
+const Todo = require('./models/todo')
 
 app.engine('handlebars', expressHandlebars({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
@@ -22,7 +23,10 @@ db.once('open', () => {
 })
 
 app.get('/', (req, res) => {
-  res.render('index')
+  Todo.find()
+    .lean()
+    .then(todos => res.render('index', { todos }))
+    .catch(error => console.log(error))
 })
 
 app.listen(port, () => {
