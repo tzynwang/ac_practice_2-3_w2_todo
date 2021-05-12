@@ -14,7 +14,9 @@ app.use(methodOverride('_method'))
 app.use(express.static('public'))
 app.use(routes)
 
-const mongoose = require('mongoose')
+require('./config/mongoose')
+
+/* const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/todo-list', { useNewUrlParser: true, useUnifiedTopology: true })
 
 const db = mongoose.connection
@@ -23,7 +25,7 @@ db.on('error', () => {
 })
 db.once('open', () => {
   console.log('mongodb connected')
-})
+}) */
 
 app.listen(port, () => {
   console.log(`App is running on http://localhpst:${port}`)
