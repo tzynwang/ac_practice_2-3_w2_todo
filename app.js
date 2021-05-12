@@ -29,6 +29,17 @@ app.get('/', (req, res) => {
     .catch(error => console.log(error))
 })
 
+app.post('/todos', (req, res) => {
+  const name = req.body.todo
+  return Todo.create({ name })
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
+app.get('/todos/new', (req, res) => {
+  return res.render('new')
+})
+
 app.listen(port, () => {
   console.log(`App is running on http://localhpst:${port}`)
 })
