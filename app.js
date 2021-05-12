@@ -44,6 +44,26 @@ app.get('/todos/:id', (req, res) => {
     .catch(error => console.log(error))
 })
 
+app.get('/todos/:id/edit', (req, res) => {
+  const id = req.params.id
+  return Todo.findById(id)
+    .lean()
+    .then(todo => res.render('edit', { todo }))
+    .catch(error => console.log(error))
+})
+
+app.post('/todos/:id/edit', (req, res) => {
+  const id = req.params.id
+  const name = req.body.edit
+  return Todo.findById(id)
+    .then(todo => {
+      todo.name = name
+      return todo.save()
+    })
+    .then(() => res.redirect(`/todos/${id}`))
+    .catch(error => console.log(error))
+})
+
 app.get('/todos/new', (req, res) => {
   return res.render('new')
 })
