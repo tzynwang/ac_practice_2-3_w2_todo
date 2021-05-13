@@ -1,14 +1,19 @@
-<a href="./todos/new">Add new todo</a>
-<ul>
+<ul class="list-group">
   {{#each todos}}
-    <li>
-      <input type="checkbox" name="isDone" {{#if this.isDone }} checked {{/if}} disabled>
-      {{this.name}}
-      <a href="./todos/{{this._id}}">detail</a>
-      <a href="./todos/{{this._id}}/edit">edit</a>
-      <form action="./todos/{{this._id}}?_method=DELETE" method="POST" style="display: inline">
-        <button type="submit">delete</button>
-      </form>
-    </li>
+  <li class="list-group-item list-group-item-action">
+    <div class="row justify-content-between">
+      <div class="col-auto">
+        <input type="checkbox" name="isDone" class="form-check-input" {{#if this.isDone }} checked {{/if}} disabled>
+        <p class="h5 d-inline">{{this.name}}</p>
+      </div>
+      <div class="col-auto">
+        <a href="./todos/{{this._id}}" class="btn btn-secondary">detail</a>
+        <a href="./todos/{{this._id}}/edit" class="btn btn-success">edit</a>
+        <form action="./todos/{{this._id}}?_method=DELETE" method="POST" class="d-inline">
+          <button type="submit" class="btn btn-danger">delete</button>
+        </form>
+      </div>
+    </div>
+  </li>
   {{/each}}
 </ul>
