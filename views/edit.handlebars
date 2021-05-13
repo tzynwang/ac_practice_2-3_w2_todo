@@ -4,7 +4,8 @@
       <input class="form-check-input mt-0" type="checkbox" name="isDone" {{#if todo.isDone}} checked {{/if}}
         aria-label="Checkbox for TODO">
     </div>
-    <input type="text" class="form-control" placeholder="edit to..." name="edit" value="{{ todo.name }}" autocomplete="off" aria-label="TODO name">
+    <input type="text" class="form-control" placeholder="edit to..." name="edit" value="{{ todo.name }}"
+      autocomplete="off" aria-label="TODO name">
     <button type="submit" class="btn btn-success">save</button>
   </div>
 </form>
