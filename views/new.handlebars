@@ -1,4 +1,7 @@
-<form action="/todos" method="POST">
-  <input type="text" placeholder="things to do..." name="todo" autocomplete="off">
-  <button type="submit">Add todo</button>
+<form class="d-inline" action="/todos" method="POST">
+  <div class="input-group">
+    <input type="text" class="form-control" placeholder="things to do..." name="todo" autocomplete="off"
+      aria-label="TODO name">
+    <button type="submit" class="btn btn-success">Add todo</button>
+  </div>
 </form>
